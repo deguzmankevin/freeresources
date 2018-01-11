@@ -12,6 +12,11 @@ const divStyle = {
   'font-family': 'Alegreya Sans',
   'text-align': 'center'
 }
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
 /* the main page for the about route of this app */
 const Chemistry = function() {
   return (
@@ -22,7 +27,7 @@ const Chemistry = function() {
 
       <UnorderedList items={resources} />
 
-      <Link to='/'>Go home</Link>
+            <Link to='/'><p style={endStyle}>Go home</p></Link>
     </div>
   );
 }

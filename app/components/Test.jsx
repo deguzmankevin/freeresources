@@ -5,9 +5,9 @@ const Link = require('react-router-dom').Link
 const Test = function() {
   return (
     <div>
-      <h1>Katlin hehe</h1>
+      <h1>Add a website!</h1>
 
-      <p>Hi Girly what's up hehehe teehahoo</p>
+      
 
       <Link to='/'>Go home</Link>
     </div>

@@ -14,6 +14,7 @@ const Students = require('./components/Students');
 const CS = require('./components/CS');
 const Chemistry = require('./components/Chemistry');
 const English = require('./components/English');
+const Biology = require('./components/Biology');
 
 ReactDOM.render((
   <BrowserRouter>
@@ -27,5 +28,6 @@ ReactDOM.render((
       <Route path="/cs" component={CS}/>
       <Route path="/english" component={English}/>
       <Route path="/chemistry" component={Chemistry}/>
+      <Route path="/biology" component={Biology}/>
     </div>
   </BrowserRouter>), document.getElementById('main'));

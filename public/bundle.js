@@ -332,7 +332,7 @@ module.exports = invariant;
 
 
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -437,7 +437,7 @@ module.exports = reactProdInvariant;
 "use strict";
 
 
-module.exports = __webpack_require__(21);
+module.exports = __webpack_require__(22);
 
 
 /***/ }),
@@ -865,7 +865,7 @@ module.exports = warning;
 
 
 
-var _prodInvariant = __webpack_require__(22);
+var _prodInvariant = __webpack_require__(23);
 
 var ReactCurrentOwner = __webpack_require__(15);
 
@@ -1234,80 +1234,6 @@ module.exports = ReactComponentTreeHook;
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * 
- */
-
-function makeEmptyFunction(arg) {
-  return function () {
-    return arg;
-  };
-}
-
-/**
- * This function accepts and discards inputs; it has no side effects. This is
- * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
- */
-var emptyFunction = function emptyFunction() {};
-
-emptyFunction.thatReturns = makeEmptyFunction;
-emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-emptyFunction.thatReturnsThis = function () {
-  return this;
-};
-emptyFunction.thatReturnsArgument = function (arg) {
-  return arg;
-};
-
-module.exports = emptyFunction;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2016-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * 
- */
-
-
-
-// Trust the developer to only use ReactInstrumentation with a __DEV__ check
-
-var debugTool = null;
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactDebugTool = __webpack_require__(130);
-  debugTool = ReactDebugTool;
-}
-
-module.exports = { debugTool: debugTool };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1364,6 +1290,80 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+function makeEmptyFunction(arg) {
+  return function () {
+    return arg;
+  };
+}
+
+/**
+ * This function accepts and discards inputs; it has no side effects. This is
+ * primarily useful idiomatically for overridable function endpoints which
+ * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ */
+var emptyFunction = function emptyFunction() {};
+
+emptyFunction.thatReturns = makeEmptyFunction;
+emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction.thatReturnsThis = function () {
+  return this;
+};
+emptyFunction.thatReturnsArgument = function (arg) {
+  return arg;
+};
+
+module.exports = emptyFunction;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright 2016-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+
+
+// Trust the developer to only use ReactInstrumentation with a __DEV__ check
+
+var debugTool = null;
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactDebugTool = __webpack_require__(130);
+  debugTool = ReactDebugTool;
+}
+
+module.exports = { debugTool: debugTool };
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 13 */
@@ -1518,7 +1518,7 @@ var _prodInvariant = __webpack_require__(3),
 var CallbackQueue = __webpack_require__(76);
 var PooledClass = __webpack_require__(20);
 var ReactFeatureFlags = __webpack_require__(77);
-var ReactReconciler = __webpack_require__(23);
+var ReactReconciler = __webpack_require__(24);
 var Transaction = __webpack_require__(35);
 
 var invariant = __webpack_require__(1);
@@ -1773,7 +1773,7 @@ var _assign = __webpack_require__(5);
 
 var PooledClass = __webpack_require__(20);
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 var warning = __webpack_require__(2);
 
 var didWarnForAddedNewProperty = false;
@@ -2708,6 +2708,36 @@ module.exports = PooledClass;
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
+const React = __webpack_require__(4);
+
+/* takes an array prop 'items' and returns a <ul> element 
+   with each item as <li> elements */
+
+const sty = {
+  'list-style-type': 'none', 
+  'font-size': '30px',
+  'text-align': 'center'
+}
+const pStyle = {
+ 'font-size': '20px' 
+}
+const UnorderedList = function({ items }){
+  return (
+    React.createElement("ul", {style: sty}, 
+  
+      items.map(function(item, i) {
+        return React.createElement("li", {key: i}, React.createElement("a", {href: item[1], target: "blank"}, item[0]), React.createElement("p", {style: pStyle}, item[2]));
+      })
+    )
+  );
+}
+
+module.exports = UnorderedList;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2013-present, Facebook, Inc.
@@ -2843,7 +2873,7 @@ module.exports = React;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2887,7 +2917,7 @@ function reactProdInvariant(code) {
 module.exports = reactProdInvariant;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2904,7 +2934,7 @@ module.exports = reactProdInvariant;
 
 
 var ReactRef = __webpack_require__(128);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 
 var warning = __webpack_require__(2);
 
@@ -3059,7 +3089,7 @@ module.exports = ReactReconciler;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3180,32 +3210,6 @@ DOMLazyTree.queueHTML = queueHTML;
 DOMLazyTree.queueText = queueText;
 
 module.exports = DOMLazyTree;
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const React = __webpack_require__(4);
-
-/* takes an array prop 'items' and returns a <ul> element 
-   with each item as <li> elements */
-
-const sty = {
-  'list-style-position': 'inside'
-  
-}
-const UnorderedList = function({ items }){
-  return (
-    React.createElement("ul", {style: sty}, 
-  
-      items.map(function(item, i) {
-        return React.createElement("li", {key: i}, React.createElement("a", {href: item[1], target: "blank"}, item[0]));
-      })
-    )
-  );
-}
-
-module.exports = UnorderedList;
 
 /***/ }),
 /* 26 */
@@ -5719,10 +5723,10 @@ module.exports = getEventModifierState;
 
 
 
-var DOMLazyTree = __webpack_require__(24);
+var DOMLazyTree = __webpack_require__(25);
 var Danger = __webpack_require__(139);
 var ReactDOMComponentTree = __webpack_require__(6);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(50);
 var setInnerHTML = __webpack_require__(37);
@@ -6018,7 +6022,7 @@ var _prodInvariant = __webpack_require__(3);
 var ReactPropTypesSecret = __webpack_require__(85);
 var propTypesFactory = __webpack_require__(70);
 
-var React = __webpack_require__(21);
+var React = __webpack_require__(22);
 var PropTypes = propTypesFactory(React.isValidElement);
 
 var invariant = __webpack_require__(1);
@@ -6395,7 +6399,7 @@ var _prodInvariant = __webpack_require__(3);
 
 var ReactCurrentOwner = __webpack_require__(15);
 var ReactInstanceMap = __webpack_require__(29);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 var ReactUpdates = __webpack_require__(16);
 
 var invariant = __webpack_require__(1);
@@ -6633,7 +6637,7 @@ module.exports = ReactUpdateQueue;
 
 var _assign = __webpack_require__(5);
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 var warning = __webpack_require__(2);
 
 var validateDOMNesting = emptyFunction;
@@ -7530,7 +7534,7 @@ var createTransitionManager = function createTransitionManager() {
 
 
 
-var _prodInvariant = __webpack_require__(22),
+var _prodInvariant = __webpack_require__(23),
     _assign = __webpack_require__(5);
 
 var ReactNoopUpdateQueue = __webpack_require__(66);
@@ -8139,7 +8143,7 @@ module.exports = function(isValidElement) {
 
 
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
 
@@ -9437,7 +9441,7 @@ module.exports = CSSProperty;
 
 var DOMProperty = __webpack_require__(18);
 var ReactDOMComponentTree = __webpack_require__(6);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 
 var quoteAttributeValueForBrowser = __webpack_require__(153);
 var warning = __webpack_require__(2);
@@ -10042,7 +10046,7 @@ module.exports = instantiateReactComponent;
 
 var _prodInvariant = __webpack_require__(3);
 
-var React = __webpack_require__(21);
+var React = __webpack_require__(22);
 
 var invariant = __webpack_require__(1);
 
@@ -10377,7 +10381,7 @@ module.exports = traverseAllChildren;
  * @typechecks
  */
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 
 /**
  * Upstream version of event listener. Does not take into account specific
@@ -10633,9 +10637,9 @@ module.exports = getActiveElement;
 
 var _prodInvariant = __webpack_require__(3);
 
-var DOMLazyTree = __webpack_require__(24);
+var DOMLazyTree = __webpack_require__(25);
 var DOMProperty = __webpack_require__(18);
-var React = __webpack_require__(21);
+var React = __webpack_require__(22);
 var ReactBrowserEventEmitter = __webpack_require__(39);
 var ReactCurrentOwner = __webpack_require__(15);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -10643,9 +10647,9 @@ var ReactDOMContainerInfo = __webpack_require__(195);
 var ReactDOMFeatureFlags = __webpack_require__(196);
 var ReactFeatureFlags = __webpack_require__(77);
 var ReactInstanceMap = __webpack_require__(29);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 var ReactMarkupChecksum = __webpack_require__(197);
-var ReactReconciler = __webpack_require__(23);
+var ReactReconciler = __webpack_require__(24);
 var ReactUpdateQueue = __webpack_require__(56);
 var ReactUpdates = __webpack_require__(16);
 
@@ -11718,9 +11722,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 
 const React = __webpack_require__(4);
 const ReactDOM = __webpack_require__(119);
-const Route = __webpack_require__(12).Route;
-const BrowserRouter = __webpack_require__(12).BrowserRouter;
-const hashHistory = __webpack_require__(12).hashHistory;
+const Route = __webpack_require__(10).Route;
+const BrowserRouter = __webpack_require__(10).BrowserRouter;
+const hashHistory = __webpack_require__(10).hashHistory;
 
 /* Import Components */
 const HelloWorld = __webpack_require__(232);
@@ -11732,6 +11736,7 @@ const Students = __webpack_require__(237);
 const CS = __webpack_require__(238);
 const Chemistry = __webpack_require__(239);
 const English = __webpack_require__(240);
+const Biology = __webpack_require__(241);
 
 ReactDOM.render((
   React.createElement(BrowserRouter, null, 
@@ -11744,7 +11749,8 @@ ReactDOM.render((
       React.createElement(Route, {path: "/students", component: Students}), 
       React.createElement(Route, {path: "/cs", component: CS}), 
       React.createElement(Route, {path: "/english", component: English}), 
-      React.createElement(Route, {path: "/chemistry", component: Chemistry})
+      React.createElement(Route, {path: "/chemistry", component: Chemistry}), 
+      React.createElement(Route, {path: "/biology", component: Biology})
     )
   )), document.getElementById('main'));
 
@@ -11768,7 +11774,7 @@ ReactDOM.render((
 var PooledClass = __webpack_require__(106);
 var ReactElement = __webpack_require__(19);
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 var traverseAllChildren = __webpack_require__(107);
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
@@ -11962,7 +11968,7 @@ module.exports = ReactChildren;
 
 
 
-var _prodInvariant = __webpack_require__(22);
+var _prodInvariant = __webpack_require__(23);
 
 var invariant = __webpack_require__(1);
 
@@ -12079,7 +12085,7 @@ module.exports = PooledClass;
 
 
 
-var _prodInvariant = __webpack_require__(22);
+var _prodInvariant = __webpack_require__(23);
 
 var ReactCurrentOwner = __webpack_require__(15);
 var REACT_ELEMENT_TYPE = __webpack_require__(67);
@@ -12500,7 +12506,7 @@ module.exports = ReactDOMFactories;
 
 
 
-var _prodInvariant = __webpack_require__(22);
+var _prodInvariant = __webpack_require__(23);
 
 var ReactPropTypeLocationNames = __webpack_require__(111);
 var ReactPropTypesSecret = __webpack_require__(112);
@@ -13665,7 +13671,7 @@ module.exports = factory;
  */
 
 
-var _prodInvariant = __webpack_require__(22);
+var _prodInvariant = __webpack_require__(23);
 
 var ReactElement = __webpack_require__(19);
 
@@ -13725,7 +13731,7 @@ module.exports = __webpack_require__(120);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactDefaultInjection = __webpack_require__(121);
 var ReactMount = __webpack_require__(95);
-var ReactReconciler = __webpack_require__(23);
+var ReactReconciler = __webpack_require__(24);
 var ReactUpdates = __webpack_require__(16);
 var ReactVersion = __webpack_require__(199);
 
@@ -13807,7 +13813,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactInstrumentation = __webpack_require__(11);
+  var ReactInstrumentation = __webpack_require__(12);
   var ReactDOMUnknownPropertyHook = __webpack_require__(202);
   var ReactDOMNullInputValuePropHook = __webpack_require__(203);
   var ReactDOMInvalidARIAHook = __webpack_require__(204);
@@ -16015,11 +16021,11 @@ module.exports = ReactComponentBrowserEnvironment;
 
 var _prodInvariant = __webpack_require__(3);
 
-var DOMLazyTree = __webpack_require__(24);
+var DOMLazyTree = __webpack_require__(25);
 var ExecutionEnvironment = __webpack_require__(7);
 
 var createNodesFromMarkup = __webpack_require__(140);
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 var invariant = __webpack_require__(1);
 
 var Danger = {
@@ -16434,7 +16440,7 @@ var _prodInvariant = __webpack_require__(3),
 
 var AutoFocusUtils = __webpack_require__(145);
 var CSSPropertyOperations = __webpack_require__(146);
-var DOMLazyTree = __webpack_require__(24);
+var DOMLazyTree = __webpack_require__(25);
 var DOMNamespaces = __webpack_require__(49);
 var DOMProperty = __webpack_require__(18);
 var DOMPropertyOperations = __webpack_require__(84);
@@ -16447,11 +16453,11 @@ var ReactDOMInput = __webpack_require__(156);
 var ReactDOMOption = __webpack_require__(157);
 var ReactDOMSelect = __webpack_require__(86);
 var ReactDOMTextarea = __webpack_require__(158);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 var ReactMultiChild = __webpack_require__(159);
 var ReactServerRenderingTransaction = __webpack_require__(168);
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 var escapeTextContentForBrowser = __webpack_require__(38);
 var invariant = __webpack_require__(1);
 var isEventSupported = __webpack_require__(46);
@@ -17474,7 +17480,7 @@ module.exports = AutoFocusUtils;
 
 var CSSProperty = __webpack_require__(83);
 var ExecutionEnvironment = __webpack_require__(7);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 
 var camelizeStyleName = __webpack_require__(147);
 var dangerousStyleValue = __webpack_require__(149);
@@ -18446,7 +18452,7 @@ module.exports = ReactDOMInput;
 
 var _assign = __webpack_require__(5);
 
-var React = __webpack_require__(21);
+var React = __webpack_require__(22);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactDOMSelect = __webpack_require__(86);
 
@@ -18742,13 +18748,13 @@ var _prodInvariant = __webpack_require__(3);
 
 var ReactComponentEnvironment = __webpack_require__(52);
 var ReactInstanceMap = __webpack_require__(29);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 
 var ReactCurrentOwner = __webpack_require__(15);
-var ReactReconciler = __webpack_require__(23);
+var ReactReconciler = __webpack_require__(24);
 var ReactChildReconciler = __webpack_require__(160);
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 var flattenChildren = __webpack_require__(167);
 var invariant = __webpack_require__(1);
 
@@ -19190,7 +19196,7 @@ module.exports = ReactMultiChild;
 
 
 
-var ReactReconciler = __webpack_require__(23);
+var ReactReconciler = __webpack_require__(24);
 
 var instantiateReactComponent = __webpack_require__(87);
 var KeyEscapeUtils = __webpack_require__(55);
@@ -19352,14 +19358,14 @@ module.exports = ReactChildReconciler;
 var _prodInvariant = __webpack_require__(3),
     _assign = __webpack_require__(5);
 
-var React = __webpack_require__(21);
+var React = __webpack_require__(22);
 var ReactComponentEnvironment = __webpack_require__(52);
 var ReactCurrentOwner = __webpack_require__(15);
 var ReactErrorUtils = __webpack_require__(44);
 var ReactInstanceMap = __webpack_require__(29);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 var ReactNodeTypes = __webpack_require__(88);
-var ReactReconciler = __webpack_require__(23);
+var ReactReconciler = __webpack_require__(24);
 
 if (process.env.NODE_ENV !== 'production') {
   var checkReactTypeSpec = __webpack_require__(162);
@@ -20562,7 +20568,7 @@ var _assign = __webpack_require__(5);
 
 var PooledClass = __webpack_require__(20);
 var Transaction = __webpack_require__(35);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 var ReactServerUpdateQueue = __webpack_require__(169);
 
 /**
@@ -20801,7 +20807,7 @@ module.exports = ReactServerUpdateQueue;
 
 var _assign = __webpack_require__(5);
 
-var DOMLazyTree = __webpack_require__(24);
+var DOMLazyTree = __webpack_require__(25);
 var ReactDOMComponentTree = __webpack_require__(6);
 
 var ReactDOMEmptyComponent = function (instantiate) {
@@ -21010,7 +21016,7 @@ var _prodInvariant = __webpack_require__(3),
     _assign = __webpack_require__(5);
 
 var DOMChildrenOperations = __webpack_require__(48);
-var DOMLazyTree = __webpack_require__(24);
+var DOMLazyTree = __webpack_require__(25);
 var ReactDOMComponentTree = __webpack_require__(6);
 
 var escapeTextContentForBrowser = __webpack_require__(38);
@@ -21179,7 +21185,7 @@ var _assign = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(16);
 var Transaction = __webpack_require__(35);
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 
 var RESET_BATCHED_UPDATES = {
   initialize: emptyFunction,
@@ -21496,7 +21502,7 @@ var CallbackQueue = __webpack_require__(76);
 var PooledClass = __webpack_require__(20);
 var ReactBrowserEventEmitter = __webpack_require__(39);
 var ReactInputSelection = __webpack_require__(93);
-var ReactInstrumentation = __webpack_require__(11);
+var ReactInstrumentation = __webpack_require__(12);
 var Transaction = __webpack_require__(35);
 var ReactUpdateQueue = __webpack_require__(56);
 
@@ -22593,7 +22599,7 @@ var SyntheticTransitionEvent = __webpack_require__(193);
 var SyntheticUIEvent = __webpack_require__(28);
 var SyntheticWheelEvent = __webpack_require__(194);
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 var getEventCharCode = __webpack_require__(58);
 var invariant = __webpack_require__(1);
 
@@ -23937,7 +23943,7 @@ BrowserRouter.propTypes = {
 
 
 
-var emptyFunction = __webpack_require__(10);
+var emptyFunction = __webpack_require__(11);
 var invariant = __webpack_require__(1);
 var ReactPropTypesSecret = __webpack_require__(42);
 
@@ -26956,54 +26962,70 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 /***/ (function(module, exports, __webpack_require__) {
 
 const React = __webpack_require__(4);
-const Link = __webpack_require__(12).Link
-const UnorderedList = __webpack_require__(25);
+const Link = __webpack_require__(10).Link
+const UnorderedList = __webpack_require__(21);
 
-const resourcesArray = [
-  'https://www.khanacademy.org/',
-  'http://tutorial.math.lamar.edu/',
-  'test - 1',
-  'test - 2'
-];
 
 const divStyle = {
   'font-family': 'Alegreya Sans',
   'text-align': 'center'
+  
 }
-
+const pStyle = {
+  
+  size:'50px', 
+  
+}
 const h1Style = {
-  size: '30px',
+  size: '50px',
   color: 'skyblue',
   'text-align': 'center'
 };
 const imgStyle = {
-  height: '20%', 
-  width: '20%'
+  height: '40%', 
+  width: '40%'
 }
-
+const itemStyle = {
+   'vertical-align': 'top', 
+  display: 'inline-block', 
+   'text-align': 'center',
+   
+  
+}
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   left:'42.5%'
+ }
+ 
 /* the main page for the index route of this app */
 const HelloWorld = function(){
   return (
+   
     React.createElement("div", {style: divStyle}, 
       React.createElement("h1", {style: h1Style}, 
       React.createElement("img", {style: imgStyle, src: "https://cdn.glitch.com/c96fa905-6b40-463a-9269-a0e99a4d39ba%2Flearning.gif?1513796638741"}), 
         "should be free! "), 
+    
+      React.createElement(Link, {to: "/about", style: pStyle}, React.createElement("p", {style: pStyle}, "Learn about this website!")), 
+      
+     
+    React.createElement("div", {style: {'margin-top': '5%'}}, 
+     React.createElement("div", {style: itemStyle}, 
+      React.createElement("img", {style: {height: '100%', width: '45%'}, src: "https://cdn.glitch.com/c96fa905-6b40-463a-9269-a0e99a4d39ba%2Fstudent.jpg?1515543222213"}), 
+      React.createElement(Link, {to: "/students"}, React.createElement("p", null, "For Students"))
+      ), 
+      React.createElement("div", {style: itemStyle}, 
+      React.createElement("img", {style: {height: '60%', width: '60%'}, src: "https://cdn.glitch.com/c96fa905-6b40-463a-9269-a0e99a4d39ba%2Fteacher.jpg?1515542910402"}), 
+      React.createElement(Link, {to: "/teachers"}, React.createElement("p", null, "For Teachers"))
+        )
+     
+  ), 
       React.createElement("br", null), 
-      React.createElement(Link, {to: "/about"}, "Learn about this website!"), 
-      
-     
-    React.createElement("br", null), 
-     
-        React.createElement(Link, {to: "/teachers"}, "For Teachers"), 
-        React.createElement("br", null), 
-        React.createElement(Link, {to: "/students"}, "For Students"), 
-        
-     React.createElement("br", null), 
-
-      
-      React.createElement(Link, {to: "/test"}, "Go to testing page")
+      React.createElement(Link, {to: "/test"}, React.createElement("p", {style: endStyle}, "Have a website you want to add?"))
 
     )
+      
   );
 }
 
@@ -27014,7 +27036,7 @@ module.exports = HelloWorld;
 /***/ (function(module, exports, __webpack_require__) {
 
 const React = __webpack_require__(4);
-const Link = __webpack_require__(12).Link
+const Link = __webpack_require__(10).Link
 
 
 const divStyle = {
@@ -27027,11 +27049,11 @@ const About = function() {
   return (
     React.createElement("div", {style: divStyle}, 
       React.createElement("h1", null, "About/Mission"), 
-
-      React.createElement("p", null, "I truly believe that money shouldn't play a big factor in the quality of education one receives. I created this app" + " " +
+      React.createElement("img", {src: "https://cdn.glitch.com/c96fa905-6b40-463a-9269-a0e99a4d39ba%2Flearn.jpg?1515541448934"}), 
+      React.createElement("p", null, "I truly believe that money shouldn't play a big factor in the quality of education one receives. I created this website" + " " +
           "to aid students who need more help in their classes at no cost at all. "), 
       React.createElement("br", null), 
-      React.createElement("p", null, "This website contains websites to learn subjects and some resources you might need in classes, all for free!"), 
+      React.createElement("p", null, "This website contains links to other websites to learn subjects and some resources you might need in classes, all for free!"), 
 
       React.createElement(Link, {to: "/"}, "Go home")
     )
@@ -27045,15 +27067,15 @@ module.exports = About;
 /***/ (function(module, exports, __webpack_require__) {
 
 const React = __webpack_require__(4);
-const Link = __webpack_require__(12).Link
+const Link = __webpack_require__(10).Link
 
 /* the main page for the about route of this app */
 const Test = function() {
   return (
     React.createElement("div", null, 
-      React.createElement("h1", null, "Katlin hehe"), 
+      React.createElement("h1", null, "Add a website!"), 
 
-      React.createElement("p", null, "Hi Girly what's up hehehe teehahoo"), 
+      
 
       React.createElement(Link, {to: "/"}, "Go home")
     )
@@ -27067,35 +27089,44 @@ module.exports = Test;
 /***/ (function(module, exports, __webpack_require__) {
 
 const React = __webpack_require__(4);
-const Link = __webpack_require__(12).Link
-const UnorderedList = __webpack_require__(25);
+const Link = __webpack_require__(10).Link
+const UnorderedList = __webpack_require__(21);
 
 const resources = [
-  ['Khan Academy', 'https://www.khanacademy.org/'],
-  ['Professor Leonard', 'https://www.youtube.com/channel/UCoHhuummRZaIVX7bD4t2czg'],
-  ['Paul\'s Online Math Notes','http://tutorial.math.lamar.edu/' ],
-  ['Math Doctor Bob', 'https://www.youtube.com/user/MathDoctorBob'],
-  ['Patrick JMT', 'http://patrickjmt.com/'],
-  ['Math Vids', 'http://mathvids.com/']
+  ['Khan Academy', 'https://www.khanacademy.org/', 'Short lecture videos with topics from arithmetic to linear algebra'],
+  ['Professor Leonard', 'https://www.youtube.com/channel/UCoHhuummRZaIVX7bD4t2czg', 'Replace your professor with this great lecturer!'],
+  ['Paul\'s Online Math Notes','http://tutorial.math.lamar.edu/', 'Notes from topics of Algebra, Calculus 1-3, Differential Equations' ],
+  ['Math Doctor Bob', 'https://www.youtube.com/user/MathDoctorBob', 'Short lecture videos on advanced math'],
+  ['Patrick JMT', 'http://patrickjmt.com/', 'Short lecture videos with many examples'],
+  ['Math Vids', 'http://mathvids.com/', 'Videos from middle school to college math']
 ];
-
 
 const divStyle = {
   'font-family': 'Alegreya Sans',
-  'text-align': 'center'
+  'text-align': 'center', 
+  size: '50px'
 }
 
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
+ 
+ const h1Style = {
+  'font-size': '50px' 
+ }
 /* the main page for the about route of this app */
 const Math = function() {
   return (
     React.createElement("div", {style: divStyle}, 
-      React.createElement("h1", null, "Math"), 
+      React.createElement("h1", {style: h1Style}, "Math"), 
 
       React.createElement("p", null, "Here are some free resources to use!"), 
 
       React.createElement(UnorderedList, {style: divStyle, items: resources}), 
 
-      React.createElement(Link, {to: "/"}, "Go home")
+           React.createElement(Link, {to: "/"}, React.createElement("p", null, "Go home"))
     )
   );
 }
@@ -27107,8 +27138,8 @@ module.exports = Math;
 /***/ (function(module, exports, __webpack_require__) {
 
 const React = __webpack_require__(4);
-const Link = __webpack_require__(12).Link
-const UnorderedList = __webpack_require__(25);
+const Link = __webpack_require__(10).Link
+const UnorderedList = __webpack_require__(21);
 
 const resources = [
   ['Piazza', 'https://piazza.com/']
@@ -27140,30 +27171,38 @@ module.exports = Teachers;
 /***/ (function(module, exports, __webpack_require__) {
 
 const React = __webpack_require__(4);
-const Link = __webpack_require__(12).Link
+const Link = __webpack_require__(10).Link
 
 
 const divStyle = {
   'font-family': 'Alegreya Sans',
   'text-align': 'center'
 }
-
+const pStyle = {
+  'margin-top': '3%'
+}
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
 /* the main page for the students route of this app */
 const Students = function() {
   return (
     React.createElement("div", {style: divStyle}, 
       React.createElement("h1", null, "Student Resources"), 
-      
-    
-      React.createElement(Link, {to: "/math"}, "Learn Math!"), 
-      React.createElement("br", null), 
-      React.createElement(Link, {to: "/cs"}, "Learn Computer Science!"), 
-      React.createElement("br", null), 
-      React.createElement(Link, {to: "/chemistry"}, "Learn Chemistry!"), 
-      React.createElement("br", null), 
-      React.createElement(Link, {to: "/english"}, "Learn English!"), 
-      React.createElement("br", null), 
-      React.createElement(Link, {to: "/"}, "Go home")
+      React.createElement("h2", null), 
+      React.createElement("img", {src: "https://cdn.glitch.com/c96fa905-6b40-463a-9269-a0e99a4d39ba%2Fmath.jpg?1515565439949"}), 
+      React.createElement(Link, {to: "/math"}, React.createElement("p", null, "Learn Math!")), 
+     React.createElement("img", {src: "https://cdn.glitch.com/c96fa905-6b40-463a-9269-a0e99a4d39ba%2Fcs.jpg?1515565437809"}), 
+      React.createElement(Link, {to: "/cs"}, React.createElement("p", {style: pStyle}, "Learn Computer Science!")), 
+     React.createElement("img", {src: "https://cdn.glitch.com/c96fa905-6b40-463a-9269-a0e99a4d39ba%2Fchemistry.jpg?1515565437041"}), 
+      React.createElement(Link, {to: "/chemistry"}, React.createElement("p", {style: pStyle}, "Learn Chemistry!")), 
+     React.createElement("img", {src: "https://cdn.glitch.com/c96fa905-6b40-463a-9269-a0e99a4d39ba%2Fenglish.jpg?1515565435497"}), 
+      React.createElement(Link, {to: "/english"}, React.createElement("p", {style: pStyle}, "Learn English!")), 
+    React.createElement("img", {src: "https://cdn.glitch.com/c96fa905-6b40-463a-9269-a0e99a4d39ba%2Fbiology.jpg?1515565436210"}), 
+      React.createElement(Link, {to: "/biology"}, React.createElement("p", {style: pStyle}, "Learn Biology!")), 
+      React.createElement(Link, {to: "/"}, React.createElement("p", {style: {}}, "Go home"))
     )
   );
 }
@@ -27175,18 +27214,23 @@ module.exports = Students;
 /***/ (function(module, exports, __webpack_require__) {
 
 const React = __webpack_require__(4);
-const Link = __webpack_require__(12).Link
-const UnorderedList = __webpack_require__(25);
+const Link = __webpack_require__(10).Link
+const UnorderedList = __webpack_require__(21);
 
 const resources = [
-  ['edX', 'https://www.edx.org/'],
-  ['Codecademy', 'https://www.codecademy.com/learn']
+  ['edX', 'https://www.edx.org/', 'Thousands of free courses from top-tier universities!'],
+  ['Codecademy', 'https://www.codecademy.com/learn', 'A great place to begin your coding journey']
 ];
 
 const divStyle = {
   'font-family': 'Alegreya Sans',
   'text-align': 'center'
 }
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
 /* the main page for the about route of this app */
 const CS = function() {
   return (
@@ -27197,7 +27241,7 @@ const CS = function() {
 
       React.createElement(UnorderedList, {items: resources}), 
 
-      React.createElement(Link, {to: "/"}, "Go home")
+           React.createElement(Link, {to: "/"}, React.createElement("p", {style: endStyle}, "Go home"))
     )
   );
 }
@@ -27209,8 +27253,8 @@ module.exports = CS;
 /***/ (function(module, exports, __webpack_require__) {
 
 const React = __webpack_require__(4);
-const Link = __webpack_require__(12).Link
-const UnorderedList = __webpack_require__(25);
+const Link = __webpack_require__(10).Link
+const UnorderedList = __webpack_require__(21);
 
 const resources = [
   ['Bozeman Science', 'http://www.bozemanscience.com/chemistry/'],
@@ -27222,6 +27266,11 @@ const divStyle = {
   'font-family': 'Alegreya Sans',
   'text-align': 'center'
 }
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
 /* the main page for the about route of this app */
 const Chemistry = function() {
   return (
@@ -27232,7 +27281,7 @@ const Chemistry = function() {
 
       React.createElement(UnorderedList, {items: resources}), 
 
-      React.createElement(Link, {to: "/"}, "Go home")
+            React.createElement(Link, {to: "/"}, React.createElement("p", {style: endStyle}, "Go home"))
     )
   );
 }
@@ -27244,20 +27293,25 @@ module.exports = Chemistry;
 /***/ (function(module, exports, __webpack_require__) {
 
 const React = __webpack_require__(4);
-const Link = __webpack_require__(12).Link
-const UnorderedList = __webpack_require__(25);
+const Link = __webpack_require__(10).Link
+const UnorderedList = __webpack_require__(21);
 
 const resources = [
-  ['Commonlit', 'https://www.commonlit.org/'],
+  ['Commonlit', 'https://www.commonlit.org/', 'Read a book for free with supplemental material!'],
   ['Crash Course', 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtOeEc9ME62zTfqc0h6Pe8vb'],
-  ['SparkNotes', 'http://www.sparknotes.com/'], 
-  ['Thug Notes', 'http://www.wisecrack.co/thug-notes/']
+  ['SparkNotes', 'http://www.sparknotes.com/', 'A great site with analysis of characters, chapters and more, to SUPPLEMENT your readings :)'], 
+  ['Thug Notes', 'http://www.wisecrack.co/thug-notes/', 'A fun and entertaining way to get the gist of a book!']
 ];
 
 const divStyle = {
   'font-family': 'Alegreya Sans',
   'text-align': 'center'
 }
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
 /* the main page for the about route of this app */
 const English = function() {
   return (
@@ -27268,12 +27322,52 @@ const English = function() {
 
       React.createElement(UnorderedList, {items: resources}), 
 
-      React.createElement(Link, {to: "/"}, "Go home")
+           React.createElement(Link, {to: "/"}, React.createElement("p", {style: endStyle}, "Go home"))
     )
   );
 }
 
 module.exports = English;
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const React = __webpack_require__(4);
+const Link = __webpack_require__(10).Link
+const UnorderedList = __webpack_require__(21);
+
+const resources = [
+  ['Biology Junction', 'http://www.biologyjunction.com/'],
+  ['Khan Academy', 'https://www.khanacademy.org/'], 
+  ['Bozeman Science', 'http://www.bozemanscience.com/biology-main-page/']
+];
+
+const divStyle = {
+  'font-family': 'Alegreya Sans',
+  'text-align': 'center'
+}
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
+/* the main page for the about route of this app */
+const Biology = function() {
+  return (
+    React.createElement("div", {style: divStyle}, 
+      React.createElement("h1", null, "Biology"), 
+
+      React.createElement("p", null, "Here are some free resources to use!"), 
+
+      React.createElement(UnorderedList, {items: resources}), 
+
+            React.createElement(Link, {to: "/"}, React.createElement("p", {style: endStyle}, "Go home"))
+    )
+  );
+}
+
+module.exports = Biology;
 
 /***/ })
 /******/ ]);

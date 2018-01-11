@@ -3,14 +3,20 @@ const Link = require('react-router-dom').Link
 const UnorderedList = require('./UnorderedList');
 
 const resources = [
-  ['edX', 'https://www.edx.org/'],
-  ['Codecademy', 'https://www.codecademy.com/learn']
+  ['Biology Junction', 'http://www.biologyjunction.com/'],
+  ['Khan Academy', 'https://www.khanacademy.org/'], 
+  ['Bozeman Science', 'http://www.bozemanscience.com/biology-main-page/']
 ];
 
 const divStyle = {
   'font-family': 'Alegreya Sans',
   'text-align': 'center'
 }
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
 /* the main page for the about route of this app */
 const Biology = function() {
   return (
@@ -21,7 +27,7 @@ const Biology = function() {
 
       <UnorderedList items={resources} />
 
-      <Link to='/'>Go home</Link>
+            <Link to='/'><p style={endStyle}>Go home</p></Link>
     </div>
   );
 }

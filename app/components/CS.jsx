@@ -3,14 +3,19 @@ const Link = require('react-router-dom').Link
 const UnorderedList = require('./UnorderedList');
 
 const resources = [
-  ['edX', 'https://www.edx.org/'],
-  ['Codecademy', 'https://www.codecademy.com/learn']
+  ['edX', 'https://www.edx.org/', 'Thousands of free courses from top-tier universities!'],
+  ['Codecademy', 'https://www.codecademy.com/learn', 'A great place to begin your coding journey']
 ];
 
 const divStyle = {
   'font-family': 'Alegreya Sans',
   'text-align': 'center'
 }
+ const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
 /* the main page for the about route of this app */
 const CS = function() {
   return (
@@ -21,7 +26,7 @@ const CS = function() {
 
       <UnorderedList items={resources} />
 
-      <Link to='/'>Go home</Link>
+           <Link to='/'><p style={endStyle}>Go home</p></Link>
     </div>
   );
 }
