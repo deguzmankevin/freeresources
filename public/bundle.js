@@ -11739,7 +11739,7 @@ const English = __webpack_require__(240);
 const Biology = __webpack_require__(241);
 
 ReactDOM.render((
-  React.createElement(BrowserRouter, null, 
+  React.createElement(BrowserRouter, {history: hashHistory}, 
     React.createElement("div", null, 
       React.createElement(Route, {exact: true, path: "/", component: HelloWorld}), 
       React.createElement(Route, {path: "/about", component: About}), 
@@ -27069,15 +27069,46 @@ module.exports = About;
 const React = __webpack_require__(4);
 const Link = __webpack_require__(10).Link
 
+const divStyle = {
+  'font-family': 'Alegreya Sans',
+  'text-align': 'center'
+}
+const endStyle = {
+   'bottom': '0',
+   'position': 'absolute',
+   'left': '50%'
+ }
+
+ function handleSubmit(e){
+    e.preventDefault();
+    alert('Error: this website is still under construction. Sorry!');
+   document.getElementById('add-website').reset();
+   
+  }
 /* the main page for the about route of this app */
 const Test = function() {
+ 
   return (
-    React.createElement("div", null, 
+    React.createElement("div", {style: divStyle}, 
       React.createElement("h1", null, "Add a website!"), 
 
+      React.createElement("h2", null, "Enter a website below with a description and we'll add it when we can!"), 
+        
       
-
-      React.createElement(Link, {to: "/"}, "Go home")
+      React.createElement("form", {id: "add-website"}, 
+        "Website:", React.createElement("br", null), 
+        React.createElement("input", {type: "text"}), React.createElement("br", null), 
+        "URL:", React.createElement("br", null), 
+        React.createElement("input", {type: "text"}), React.createElement("br", null), 
+        "Description:", React.createElement("br", null), 
+        React.createElement("input", {type: "text"}), React.createElement("br", null), 
+        React.createElement("input", {type: "submit", value: "Submit", onClick: handleSubmit})
+        
+        ), 
+      
+      
+      
+      React.createElement(Link, {to: "/"}, React.createElement("p", {style: endStyle}, "Go home"))
     )
   );
 }
@@ -27142,7 +27173,7 @@ const Link = __webpack_require__(10).Link
 const UnorderedList = __webpack_require__(21);
 
 const resources = [
-  ['Piazza', 'https://piazza.com/']
+  ['Piazza', 'https://piazza.com/', 'A great way for students to answer each other\'s questions']
 ];
 
 const divStyle = {
@@ -27155,7 +27186,7 @@ const Teachers = function() {
   return (
     React.createElement("div", {style: divStyle}, 
       React.createElement("h1", null, "Teacher Resources"), 
-      
+      React.createElement("h2", null, "Here are some free resources to aid you in your classroom."), 
       React.createElement(UnorderedList, {items: resources}), 
    
 
@@ -27219,7 +27250,9 @@ const UnorderedList = __webpack_require__(21);
 
 const resources = [
   ['edX', 'https://www.edx.org/', 'Thousands of free courses from top-tier universities!'],
-  ['Codecademy', 'https://www.codecademy.com/learn', 'A great place to begin your coding journey']
+  ['Codecademy', 'https://www.codecademy.com/learn', 'A great place to begin your coding journey'],  
+  ['Khan Academy', 'https://www.khanacademy.org/computing', 'Quality readings and videos'],
+  ['Bento.io', 'https://bento.io/', 'Learn to be a self-taught expert developer']
 ];
 
 const divStyle = {

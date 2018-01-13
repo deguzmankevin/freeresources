@@ -17,7 +17,7 @@ const English = require('./components/English');
 const Biology = require('./components/Biology');
 
 ReactDOM.render((
-  <BrowserRouter>
+  <BrowserRouter history={hashHistory}>
     <div>
       <Route exact path="/" component={HelloWorld}/>
       <Route path="/about" component={About}/>

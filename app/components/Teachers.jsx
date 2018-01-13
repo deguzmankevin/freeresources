@@ -3,7 +3,7 @@ const Link = require('react-router-dom').Link
 const UnorderedList = require('./UnorderedList');
 
 const resources = [
-  ['Piazza', 'https://piazza.com/']
+  ['Piazza', 'https://piazza.com/', 'A great way for students to answer each other\'s questions']
 ];
 
 const divStyle = {
@@ -16,7 +16,7 @@ const Teachers = function() {
   return (
     <div style={divStyle}>
       <h1>Teacher Resources</h1>
-      
+      <h2>Here are some free resources to aid you in your classroom.</h2>
       <UnorderedList items={resources} />
    
 
